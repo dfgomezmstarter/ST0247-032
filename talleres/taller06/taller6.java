@@ -41,17 +41,11 @@ public class taller6 {
                    comp=g.getWeight(i,g.getSuccessors(i).get(0));
                }
                else if(g.getWeight(i,g.getSuccessors(i).get(j))<=comp && path[j]==false && i!=g.getSuccessors(i).get(j)){
-                   //System.out.println(i+"->"+g.getSuccessors(i).get(j));
                    comp=g.getWeight(i,g.getSuccessors(i).get(j));
-                   if(g.getSuccessors(i).get(j)==0){
-                       pos=0;
-                   }else {
-                       pos=g.getSuccessors(i).get(j)-1;
-                   }
+                   pos=g.getSuccessors(i).get(j);
                }
            }
            path[pos]=true;
-           //System.out.println(comp);
            r+=comp;
            comp=Integer.MAX_VALUE;
         }
