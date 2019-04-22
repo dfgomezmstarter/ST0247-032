@@ -107,68 +107,6 @@ public class MergeSort {
     }
 
     
-    
-    
-    
-    
-    
-    
-    /**
-     * Metodo auxiliar que llama al método posterior
-     *
-     * @param a un arreglo con elementos
-     */
-    public static void quicksort(int[] a) {
-        quickSort(a, 0, a.length - 1);
-    }
-
-    /**
-     * Metodo que pretende implementar el funcionamiento del algoritmo MergeSort
-     * de un conjunto de elementos
-     *
-     * @param a un arreglo con elementos
-     *
-     * para mas informacion ver
-     * @see <a href="https://www.youtube.com/watch?v=PgBzjlCcFvc">
-     *
-     */
-    public static void quickSort(int a[], int l, int r) {
-        if (l < r) {
-            int index = findIndex(a, l, r);
-            quickSort(a, l, index - 1);
-            quickSort(a, index + 1, r);
-        }
-    }
-
-    /**
-     * Metodo que toma el último elemento como indice y cambia todos los
-     * elementos menores a una posición antes de este elemento y posiciona los
-     * elementos mayores después de ese índice
-     *
-     * @param arr un arreglo de elementos
-     * @param l indice inicial del subconjunto que se quiere particionar
-     * @param r indice final del subconjunto que se quiere partcionar
-     * @return el índice donde se parte el conjunto de números
-     */
-    private static int findIndex(int arr[], int l, int r) {
-        int index = arr[r];
-        int i = l - 1;
-        for (int j = l; j < r; j++) {
-            if (arr[j] <= index) {
-                i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[r];
-        arr[r] = temp;
-
-        return i + 1;
-    }
-
     public static void main(String args[]) {
         int arreglo[] = {12, 11, 13, 5, 6, 7};
         System.out.println("Arreglo orignal");
