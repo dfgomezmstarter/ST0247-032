@@ -115,20 +115,19 @@ public class ProyectoDatos
 
     public static LinkedList<Integer> caminoposible(Graph grafo, ArrayList<Float> com, ArrayList<Integer> hijos, int mayor, boolean[] visitados, LinkedList<ArrayList<Integer>> ver){
         LinkedList<Integer> camino = new LinkedList<Integer>();
-        camino.add(mayor);
-        visitados[mayor] = true;
-        int menor = hijos.get(0);
-        int i = 0;
-        while(visitados[menor]==true&&i<hijos.size()-1){
-            i++;
-            menor = hijos.get(i);
-        }
-        if(i<hijos.size()-1){
-            int peso = grafo.getWeight(mayor,menor);
-            if(peso<com.get(com.size()-1)){
-                camino.add(menor);
-                hijos = ver.get(menor);
-                return recorrido(grafo,com,hijos,visitados,ver,camino,menor,peso);
+        int pos=1;
+        for(int i = 0; i < grafo.size(); i++){
+            if (camino.size()==5){
+                return camino;
+            }else {
+                if(grafo.getWeight(mayor,ver.get(mayor).get(pos))<=com.get(ver.get(0).get(ver.size()-1)) && !visitados[mayor]){
+                    camino.add(mayor);
+                    visitados[mayor] = true;
+                    visitados[ver.get(mayor).get(pos)]=true;
+                    mayor=ver.get(mayor).get(pos);
+                }else{
+                    ++pos;
+                }
             }
         }
         return camino;
